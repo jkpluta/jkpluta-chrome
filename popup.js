@@ -1,6 +1,3 @@
-// $('body').style('min-width', (9 * window.width / 10).toString() + 'px');
-// $('body').style('width', '300px');
-
 $(document).ready(function() {
   $.ajax({
     url: 'https://jkpluta.github.io/icons.html',
