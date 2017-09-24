@@ -1,4 +1,42 @@
 $(document).ready(function() {
+  $('#add').click(function() {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      var tab = tabs[0];
+      var page = { type: 'jkpluta.bookmark', title: tab.title, url: tab.url }
+      alert(JSON.stringify(page));
+      var token = '5f06a451281e69046a966dccef4aa29cd4569ec2';
+      var data = {
+        "description": "Zakładka",
+        "public": false,
+        "files": {
+          "bookmark.json": {
+            "content": JSON.stringify(page)
+          }
+        }
+      }
+      $.ajax({
+        url: 'https://api.github.com/gists',
+        method: "POST",
+        dataType: "json",
+        crossDomain: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+        cache: false,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+          xhr.setRequestHeader("Authorization", "Token " + token);
+          xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+        },
+        success: function (data) {
+          alert('OK')
+        },
+        error: function (jqXHR, status, error) {
+          alert(error);
+          alert(jqXHR.status0);
+        }
+      });
+    });
+  });
   $.ajax({
     url: 'https://jkpluta.github.io/icons.html',
     cache: false,
@@ -12,6 +50,7 @@ $(document).ready(function() {
       }
       $('#container').append('</p>');
       $('#container').find('a').attr('target', '_blank');
+      $('#add').show();
     },
     error: function (xhr, status, error) {
       $('#container').append('BŁĄD!');
