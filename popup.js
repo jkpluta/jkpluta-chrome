@@ -1,9 +1,9 @@
 $(document).ready(function() {
   $('#add').click(function() {
+    $("#add").prop('disabled', true);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       var tab = tabs[0];
       var page = { type: 'jkpluta.bookmark', title: tab.title, url: tab.url }
-      alert(JSON.stringify(page));
       var token = '5f06a451281e69046a966dccef4aa29cd4569ec2';
       var data = {
         "description": "Zakładka",
@@ -28,11 +28,10 @@ $(document).ready(function() {
           xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
         },
         success: function (data) {
-          alert('OK')
+          $("#add").prop('disabled', false);
         },
         error: function (jqXHR, status, error) {
           alert(error);
-          alert(jqXHR.status0);
         }
       });
     });
