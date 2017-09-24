@@ -1,10 +1,10 @@
+let token = null;
 $(document).ready(function() {
   $('#add').click(function() {
     $("#add").prop('disabled', true);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       var tab = tabs[0];
       var page = { type: 'jkpluta.bookmark', title: tab.title, url: tab.url }
-      var token = '5f06a451281e69046a966dccef4aa29cd4569ec2';
       var data = {
         "description": "Zakładka",
         "public": false,
@@ -49,7 +49,13 @@ $(document).ready(function() {
       }
       $('#container').append('</p>');
       $('#container').find('a').attr('target', '_blank');
-      $('#add').show();
+      chrome.storage.sync.get({
+        token: null
+      }, function(items) {
+        token = items.token;
+        if (token)
+          $('#add').show();
+      });
     },
     error: function (xhr, status, error) {
       $('#container').append('BŁĄD!');
