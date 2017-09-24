@@ -13,7 +13,7 @@ $(document).ready(function() {
             "content": JSON.stringify(page)
           }
         }
-      }
+      };
       $.ajax({
         url: 'https://api.github.com/gists',
         method: "POST",
@@ -56,4 +56,4 @@ $(document).ready(function() {
       $('#container').append('BŁĄD!');
     }
   });
-})
+});
