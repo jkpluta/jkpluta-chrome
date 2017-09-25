@@ -1,19 +1,25 @@
 $(document).ready(function() {
     chrome.storage.sync.get({
+        iconSize: "32",
         username: null,
-        token: null,
-        message: null
+        token: null
     }, function(items) {
+        $('#iconSize').val(items.iconSize);
         $('#username').val(items.username);
         $('#token').val(items.token);
-        $('#message').text(items.message);
     });
     $('#save').click(function() {
         chrome.storage.sync.set({
             username: $('#username').val(),
               token: $('#token').val()
         }, function() {
-            if ($('#token').val() === '') {
+            chrome.storage.sync.set({
+                iconSize: $('#iconSize').val(),
+                username: $('#username').val(),
+                token: $('#token').val()
+            }, function() {
+            });
+            if ($('#username').val() !== '' && $('#password').val() !== '') {
                 $.ajax({
                     url: 'https://api.github.com/authorizations',
                     method: "POST",
@@ -29,18 +35,13 @@ $(document).ready(function() {
                     },
                     success: function (data) {
                         chrome.storage.sync.set({
-                            username: $('#username').val(),
                             token: data.token
                         }, function() {
                             window.close();
                         });
                     },
                     error: function (jqXHR, status, error) {
-                        chrome.storage.sync.set({
-                            message: jqXHR.status.toString() + ' ' + status,
-                        }, function() {
-                            window.close();
-                        });
+                        $('#message').text(jqXHR.status.toString() + ' - ' + status);
                     }
                 });
             }

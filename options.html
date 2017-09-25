@@ -8,23 +8,33 @@
     <script src="options.js"></script>
   </head>
   <body>
-    <form>
+    <div>
       <div>
+        <label for="iconSize">Rozmiar ikon:</label>
+        <select type="text" name="iconSize" id="iconSize" style="width: 100%;" autofocus>
+          <option value="16">16</option>
+          <option value="24">24</option>
+          <option value="32">32</option>
+          <option value="48">48</option>
+          <option value="64">64</option>
+        </select>
+      </div>
+      <p>
         <label for="username">Użytkownik:</label>
-        <input type="text" name="username" id="username">
-      </div>
-      <div>
+        <input type="text" name="username" id="username" style="width: 100%;">
+      </p>
+      <p>
         <label for="password">Hasło:</label>
-        <input type="password" name="password" id="password">
-      </div>
-      <div>
+        <input type="password" name="password" id="password" style="width: 100%;">
+      </p>
+      <p>
         <label for="token">Token:</label>
-        <input type="text" name="token" id="token">
-      </div>
-      <div id="message"></div>
+        <input type="text" name="token" id="token" style="width: 100%;">
+      </p>
+      <p id="message" style="background-color: yelow; color:red;"></p>
       <p style="text-align: right;">
         <button id="save" href="#">Zapisz</button>
       </p>
-    </form>
+    </div>
   </body>
 </html>
