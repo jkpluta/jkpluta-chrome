@@ -52,7 +52,7 @@ $(document).ready(function() {
                 for (var i = 0; i < links.length; i++) {
                     var link = links.eq(i);
                     if (link.attr('ICON_URI') != null)
-                        $('#container').append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="' + link.text() + '" title="' + iconSize + link.text() + '" width="' + iconSize + '" height="' + iconSize + '"></a> ');
+                        $('#container').append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="' + link.text() + '" title="' + link.text() + '" width="' + iconSize + '" height="' + iconSize + '"></a> ');
                 }
                 $('#container').append('</p>');
                 $('#container').find('a').attr('target', '_blank');
