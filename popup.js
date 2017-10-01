@@ -2,7 +2,10 @@ let token = null;
 let iconSize = "8";
 $(document).ready(function() {
     $('#create').click(function() {
-        chrome.tabs.create({url: "/note.html"});
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            var tab = tabs[0];
+            chrome.tabs.create({url: "/note.html?tabId=" + tab.id.toString()});
+        });
     });
     $('#add').click(function() {
         $("#add").prop('disabled', true);

@@ -15,13 +15,45 @@
   </head>
 
   <body>
-    <h1>Notatka</h1>
-    <div style="float: right;">
-      <button id="save" href="#">Zapisz</button>
-      <button id="cancel" href="#">Anuluj</button>
-    </div>
-    <div>
-        Copyright © 2017 <a href="https://jkpluta.github.io" target="_blank">Jan K. Pluta</a>
+    <div style="width: 100%; text-align: center;">
+      <h1>Nowa notatka</h1>
+      <table style="margin-left: auto; margin-right: auto; width: 600px;">
+        <tr>
+          <th style="text-align: left;">
+            <label for="title">Tytuł:</label>
+          </th>
+          <td>
+            <input type="text" name="title" id="title" style="width: 99%;">
+          </td>
+        </tr>
+        <tr>
+          <th style="text-align: left;">
+            <label for="url">Adres:</label>
+          </th>
+          <td>
+            <input type="text" name="url" id="url" style="width: 99%;">
+          </td>
+        </tr>
+        <tr>
+          <th style="text-align: left;">
+            <label for="description">Opis:</label>
+          </th>
+          <td>
+            <textarea type="text" rows="20" name="description" id="description" style="width: 99%;"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: right;">
+            <button id="save" href="#">Zapisz</button>
+            <button id="cancel" href="#">Anuluj</button>
+          </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: left;">
+              Copyright © 2017 <a href="https://jkpluta.github.io" target="_blank">Jan K. Pluta</a>
+            </td>
+          </tr>
+        </table>
     </div>
   </body>
 </html>
