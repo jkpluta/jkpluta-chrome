@@ -13,7 +13,7 @@ $(document).ready(function() {
             var tab = tabs[0];
             var page = { type: 'jkpluta.bookmark', title: tab.title, url: tab.url }
             var data = {
-                "description": "Zakładka",
+                "description": "Jan K. Pluta",
                 "public": true,
                 "files": {
                     "bookmark.json": {

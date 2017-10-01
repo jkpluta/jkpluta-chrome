@@ -18,7 +18,7 @@ $(document).ready(function() {
             description: $('#description').val()
         }
         var data = {
-            "description": "Zakładka",
+            "description": "Jan K. Pluta",
             "public": true,
             "files": {
                 "bookmark.json": {
