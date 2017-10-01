@@ -10,7 +10,6 @@ $(document).ready(function() {
         $('#url').val(tab.url);
     });
     $('#save').click(function() {
-        alert($('#description').val())
         var page = { 
             type: 'jkpluta.bookmark', 
             title: $('#title').val(), 
