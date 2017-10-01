@@ -1,6 +1,9 @@
 let token = null;
 let iconSize = "8";
 $(document).ready(function() {
+    $('#create').click(function() {
+        chrome.tabs.create({url: "/note.html"});
+    });
     $('#add').click(function() {
         $("#add").prop('disabled', true);
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -56,8 +59,10 @@ $(document).ready(function() {
                 }
                 $('#container').append('</p>');
                 $('#container').find('a').attr('target', '_blank');
-                if (token)
+                if (token) {
                     $('#add').show();
+                    $('#create').show();
+                }
             });
         },
         error: function (xhr, status, error) {
